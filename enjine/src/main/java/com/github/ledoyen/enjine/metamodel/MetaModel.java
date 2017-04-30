@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import com.github.ledoyen.enjine.metamodel.validation.Validator;
 
 /**
- * Represent the structure of a Java class.
+ * Represent the structure conditional a Java class.
  *
  * @param <T> type wrapped by the current {@link MetaModel}
  */

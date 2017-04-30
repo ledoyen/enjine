@@ -1,0 +1,3 @@
+com.github.ledoyen.enjine.discovery.DiscoveryTest$TestService1
+com.github.ledoyen.enjine.discovery.DiscoveryTest$TestService2
+com.github.ledoyen.enjine.discovery.DiscoveryTest$TestService1 # This line proves that TestService1 is loaded only once

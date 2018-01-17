@@ -3,11 +3,11 @@ package com.github.ledoyen.enjine.metamodel.value;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
-class FieldValue implements Value {
+class FieldValuePointer implements ValuePointer {
 
     private final Field _field;
 
-    FieldValue(Field field) {
+    FieldValuePointer(Field field) {
         _field = field;
     }
 

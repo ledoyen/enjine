@@ -4,25 +4,24 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import com.github.ledoyen.enjine.metamodel.ValueFinder;
-import com.github.ledoyen.enjine.metamodel.value.Value;
+import com.github.ledoyen.enjine.metamodel.value.ValuePointer;
 
 public abstract class ValueFinders {
     private ValueFinders() {
     }
 
-    public static ValueFinder<Object> fields() {
+    public static ValueFinder fields() {
         return model -> model
                 .fields(field -> !Modifier.isStatic(field.getModifiers()))
-                .map(Value::from)
+                .map(ValuePointer::from)
                 .collect(Collectors.toSet());
     }
 
-    public static ValueFinder<Object> methodParameters() {
+    public static ValueFinder methodParameters() {
         return model -> model
                 .methods(method -> !Modifier.isStatic(method.getModifiers()))
                 .flatMap(method -> Arrays.stream(method.getParameters()))
-                .map(Value::from)
+                .map(ValuePointer::from)
                 .collect(Collectors.toSet());
     }
 }

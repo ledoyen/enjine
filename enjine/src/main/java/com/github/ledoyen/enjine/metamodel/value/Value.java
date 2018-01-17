@@ -1,22 +1,26 @@
 package com.github.ledoyen.enjine.metamodel.value;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Parameter;
-import java.lang.reflect.Type;
+public class Value {
+    private static final Value MISSING = new Value(null) {
+        public boolean isPresent() {
+            return false;
+        }
+    };
+    private final Object value;
 
-public interface Value {
-    String name();
-
-    Type type();
-
-    void apply(Object instance, Object value);
-
-    static Value from(Field f) {
-        return new FieldValue(f);
+    public Value(Object value) {
+        this.value = value;
     }
 
-    static Value from(Parameter p) {
-        return new ParameterValue(p);
+    public static Value present(Object value) {
+        return new Value(value);
     }
 
+    public static Value missing() {
+        return MISSING;
+    }
+
+    public boolean isPresent() {
+        return true;
+    }
 }

@@ -3,11 +3,11 @@ package com.github.ledoyen.enjine.metamodel.value;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 
-class ParameterValue implements Value {
+class ParameterValuePointer implements ValuePointer {
 
     private final Parameter _parameter;
 
-    ParameterValue(Parameter parameter) {
+    ParameterValuePointer(Parameter parameter) {
         _parameter = parameter;
     }
 

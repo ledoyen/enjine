@@ -3,19 +3,19 @@ package com.github.ledoyen.enjine.metamodel;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.github.ledoyen.enjine.metamodel.value.Value;
+import com.github.ledoyen.enjine.metamodel.value.ValuePointer;
 
 @FunctionalInterface
-public interface ValueFinder<T> {
+public interface ValueFinder {
 
-    Set<Value> find(MetaModel<T> model);
+    Set<ValuePointer> find(MetaModel<?> model);
 
-    default ValueFinder<T> and(ValueFinder<T> other) {
+    default ValueFinder and(ValueFinder other) {
         return model -> {
-            Set<Value> values = new HashSet<>();
-            values.addAll(find(model));
-            values.addAll(other.find(model));
-            return values;
+            Set<ValuePointer> valuePointers = new HashSet<>();
+            valuePointers.addAll(find(model));
+            valuePointers.addAll(other.find(model));
+            return valuePointers;
         };
     }
 }
